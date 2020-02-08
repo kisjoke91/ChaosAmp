@@ -681,7 +681,7 @@ void GUI_ShutdownMenu(AmpIO_Button b) {
                     }
 
                     else if(sel == 1) {
-                        if (settings.shutdownTimeout < 255) {
+                        if (settings.shutdownTimeout < 99) {
                             settings.shutdownTimeout ++;
                         }
                         drawNumericParameter(1, settings.shutdownTimeout,
