@@ -32,23 +32,8 @@
 
 volatile uint8_t s = 0;
 volatile uint8_t r = 0;
-volatile uint8_t refresh = 0;
 volatile uint8_t ie = 0;
 
-
-void showReceived(uint8_t d) {
-
-    lcd_clearrow(0,2);
-    lcd_string("Recv: ");
-    lcd_decimal(d);
-}
-
-void showSent(uint8_t d) {
-
-    lcd_clearrow(0,3);
-    lcd_string("Sent: ");
-    lcd_decimal(d);
-}
 
 void EXT_off() {
     EXT_EN_PORT &= ~(1 << EXT_EN_PIN);
@@ -85,9 +70,6 @@ uint8_t SPI_TxRx(uint8_t data) {
 
 int main() {
 
-    lcd_init();
-    lcd_clear();
-    lcd_string("SPI Slave");
     init();
 
     while(1) {
@@ -140,26 +122,3 @@ ISR (INT0_vect) {
         SPSR &= ~(1 << SPIF);
     }
 }
-
-/*switch (r) {
-    case EXT_CMD_ON:
-        EXT_on();
-        s = EXT_STATE_ON;
-        break;
-    case EXT_CMD_OFF:
-        EXT_off();
-        s = EXT_STATE_OFF;
-        break;
-    case EXT_QUERY_TYPE:
-        s = EXT_TYPE;
-        break;
-    case EXT_QUERY_STATE:
-        s = (EXT_EN_PINX & (1 << EXT_EN_PIN)) ?
-            EXT_STATE_ON : EXT_STATE_OFF;
-        break;
-    case EXT_CMD_NOPE:
-        break;
-    default:
-        break;
-}
-refresh = 1;*/
