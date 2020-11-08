@@ -10,6 +10,16 @@
 #define Slave_Read_Address		0x21
 #define	count					10
 
+
+/*
+    1. Initialize I2C.
+    2. Generate START condition.
+    3. Write device Write address (SLA+W) and check for acknowledgement.
+    4. After acknowledgement write data to slave device.
+    5. Generate REPEATED START condition with SLA+R.
+    6. Receive data from slave device.
+*/
+
 int main() {
 
     lcd_init();

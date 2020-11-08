@@ -8,6 +8,20 @@
 
 #define Slave_Address			0x20
 
+
+/*
+    1.  Initialize I2C with slave device address.
+    2.  Listen to bus for get addressed by master.
+    3.  While addressed with SLA+W by master device, receive data from master device.
+    4.  Return acknowledgement after each byte received.
+    5.  Clear interrupt flag after REPEATED START/STOP received.
+    6.  Print received data on LCD.
+    7.  Again listen to bus for get addressed by master.
+    8.  While addressed with SLA+R by master device, transmit data to master device.
+    9.  Transmit data till NACK/REPEATED START/STOP receive from master.
+    10. Clear interrupt flag after NACK/REPEATED START/STOP received.
+*/
+
 int main() {
 
     char buffer[10];
